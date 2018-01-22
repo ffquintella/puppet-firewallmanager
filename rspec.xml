@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="1" skipped="0" failures="0" errors="0" time="0.915081" timestamp="2018-01-22T20:53:00-02:00" hostname="d001.esi.fgv.br">
+<properties>
+<property name="seed" value="42173"/>
+</properties>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager should compile into a catalogue without dependency cycles" file="./spec/classes/firewallmanager_spec.rb" time="0.912555"></testcase>
+</testsuite>
