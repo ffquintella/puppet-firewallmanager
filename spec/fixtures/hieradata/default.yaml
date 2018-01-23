@@ -1,3 +1,45 @@
 ---
 
-foo_message: teste
+###
+# Firewall basico
+# A porta 30865 é para uso do csync2
+# as portas 1556 e 13782 / 13724 são para o netbackup
+######
+
+firewallmanager::allow_icmp: 'yes'
+frwRule::allow_localhost: 'yes'
+frwRule::log_failures: 'no'
+frwRule::ports:
+  '22':
+    tcp: 'allow'
+  '10051':
+    udp: 'drop'
+  '10050':
+    udp: 'allow'
+  '30865':
+    tcp: 'allow'
+  '23':
+    tcp: 'drop'
+    udp: 'drop'
+
+iptables::allow_icmp: 'yes'
+iptables::allow_localhost: 'yes'
+iptables::log_failures: 'no'
+iptables::ports:
+  '22':
+    tcp: 'allow'
+  '10050':
+    tcp: 'allow'
+  '10051':
+    tcp: 'allow'
+  '1556':
+    tcp: 'allow'
+  '13782':
+    tcp: 'allow'
+  '13724':
+    tcp: 'allow'
+  '30865':
+    tcp: 'allow'
+  '23':
+    tcp: 'drop'
+    udp: 'drop'

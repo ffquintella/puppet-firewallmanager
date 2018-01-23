@@ -7,7 +7,9 @@
 # @example
 #   include firewallmanager
 class firewallmanager (
-  $enabled = false
+  $enabled = false,
+  $purge = false,
+  $allow_icmp = true
   ) {
 
     # Only supported os so far
@@ -15,8 +17,32 @@ class firewallmanager (
       file {'/etc/sysconfig/firewallmanager':
         ensure => directory,
       }
+
+      if $enabled {
+        Firewall {
+          before  => Class['firewallmanager::post'],
+          require => Class['firewallmanager::pre'],
+        }
+
+        class { 'firewallmanager::pre':
+          allow_icmp => allow_icmp,
+        }
+
+        class { 'firewallmanager::post': }
+
+        resources { 'firewall':
+          purge => $purge ,
+        }
+
+        class { 'firewall': }
+
+        #$frwRule::allow_icmp: = lookup('frwRule', Hash, 'hash')
+      }
+
+    }else{
+      notify { 'UNSUPPORTED OS':}
     }
 
-    notify { 'foo': message => hiera('foo_message') }
+    #notify { 'foo': message => lookup('foo_message') }
 
 }
