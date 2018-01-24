@@ -6,6 +6,17 @@
 #
 # @example
 #   include firewallmanager::post
-class firewallmanager::post {
-  
+class firewallmanager::post (
+  $block_default = true
+  ){
+    Firewall {
+      before => undef,
+    }
+    if $block_default {
+      firewall { '999 drop all':
+        proto  => 'all',
+        action => 'drop',
+      }
+    }
+
 }

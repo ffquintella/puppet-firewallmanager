@@ -9,8 +9,13 @@
 class firewallmanager (
   $enabled = false,
   $purge = false,
-  $allow_icmp = true
+  $allow_icmp = true,
+  $block_default = true,
+  $allow_localhost = true,
+  $ports = {}
   ) {
+
+    include stdlib
 
     # Only supported os so far
     if $::os['family'] == 'RedHat' {
@@ -25,16 +30,25 @@ class firewallmanager (
         }
 
         class { 'firewallmanager::pre':
-          allow_icmp => allow_icmp,
+          allow_icmp      => $allow_icmp,
+          allow_localhost => $allow_localhost,
         }
 
-        class { 'firewallmanager::post': }
+        class { 'firewallmanager::post':
+          block_default => $block_default,
+        }
 
         resources { 'firewall':
           purge => $purge ,
         }
 
         class { 'firewall': }
+
+        $tmpports = lookup('frwRule::ports', Hash, 'hash', {})
+
+        $real_ports = deep_merge($ports, $tmpports)
+
+        notify {"DEBUG ports \$real_ports ${real_ports} value":}
 
         #$frwRule::allow_icmp: = lookup('frwRule', Hash, 'hash')
       }

@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="rspec" tests="15" skipped="0" failures="0" errors="0" time="3.060091" timestamp="2018-01-23T19:06:14-02:00" hostname="d001.esi.fgv.br">
+<testsuite name="rspec" tests="22" skipped="0" failures="0" errors="0" time="3.114355" timestamp="2018-01-24T11:55:25-02:00" hostname="d001.esi.fgv.br">
 <properties>
-<property name="seed" value="31025"/>
+<property name="seed" value="10893"/>
 </properties>
-<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should compile into a catalogue without dependency cycles" file="./spec/classes/firewallmanager_spec.rb" time="2.424718"></testcase>
-<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain File[/etc/sysconfig/firewallmanager]" file="./spec/classes/firewallmanager_spec.rb" time="0.036177"></testcase>
-<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Resources[firewall] with purge =&gt; false" file="./spec/classes/firewallmanager_spec.rb" time="0.012499"></testcase>
-<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Firewall[000 accept all icmp] with proto =&gt; &quot;icmp&quot;" file="./spec/classes/firewallmanager_spec.rb" time="0.011252"></testcase>
-<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Class[firewall]" file="./spec/classes/firewallmanager_spec.rb" time="0.012233"></testcase>
-<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on debian should compile into a catalogue without dependency cycles" file="./spec/classes/firewallmanager_spec.rb" time="0.069657"></testcase>
-<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on debian should contain Notify[UNSUPPORTED OS]" file="./spec/classes/firewallmanager_spec.rb" time="0.032282"></testcase>
-<testcase classname="spec.classes.post_spec" name="firewallmanager::post on oraclelinux-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/post_spec.rb" time="0.052997"></testcase>
-<testcase classname="spec.classes.post_spec" name="firewallmanager::post on scientific-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/post_spec.rb" time="0.051895"></testcase>
-<testcase classname="spec.classes.post_spec" name="firewallmanager::post on centos-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/post_spec.rb" time="0.051497"></testcase>
-<testcase classname="spec.classes.post_spec" name="firewallmanager::post on redhat-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/post_spec.rb" time="0.057838"></testcase>
-<testcase classname="spec.classes.pre_spec" name="firewallmanager::pre on oraclelinux-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/pre_spec.rb" time="0.060373"></testcase>
-<testcase classname="spec.classes.pre_spec" name="firewallmanager::pre on scientific-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/pre_spec.rb" time="0.060841"></testcase>
-<testcase classname="spec.classes.pre_spec" name="firewallmanager::pre on centos-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/pre_spec.rb" time="0.060759"></testcase>
-<testcase classname="spec.classes.pre_spec" name="firewallmanager::pre on redhat-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/pre_spec.rb" time="0.056604"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should compile into a catalogue without dependency cycles" file="./spec/classes/firewallmanager_spec.rb" time="2.377036"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Class[stdlib]" file="./spec/classes/firewallmanager_spec.rb" time="0.030483"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain File[/etc/sysconfig/firewallmanager]" file="./spec/classes/firewallmanager_spec.rb" time="0.010964"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Resources[firewall] with purge =&gt; false" file="./spec/classes/firewallmanager_spec.rb" time="0.011348"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Firewall[000 accept all icmp] with proto =&gt; &quot;icmp&quot;" file="./spec/classes/firewallmanager_spec.rb" time="0.011039"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Class[firewall]" file="./spec/classes/firewallmanager_spec.rb" time="0.011172"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Class[firewallmanager::pre] with allow_icmp =&gt; true and allow_localhost =&gt; true" file="./spec/classes/firewallmanager_spec.rb" time="0.012693"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Firewall[001 accept all to lo interface] with proto =&gt; &quot;all&quot;, iniface =&gt; &quot;lo&quot; and action =&gt; &quot;accept&quot;" file="./spec/classes/firewallmanager_spec.rb" time="0.011476"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Firewall[002 reject local traffic not on loopback interface] with action =&gt; &quot;reject&quot;" file="./spec/classes/firewallmanager_spec.rb" time="0.011281"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Firewall[003 accept related established rules] with action =&gt; &quot;accept&quot;" file="./spec/classes/firewallmanager_spec.rb" time="0.013405"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Class[firewallmanager::post] with block_default =&gt; true" file="./spec/classes/firewallmanager_spec.rb" time="0.011766"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on redhat should contain Firewall[999 drop all] with proto =&gt; &quot;all&quot; and action =&gt; &quot;drop&quot;" file="./spec/classes/firewallmanager_spec.rb" time="0.012106"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on debian should compile into a catalogue without dependency cycles" file="./spec/classes/firewallmanager_spec.rb" time="0.073108"></testcase>
+<testcase classname="spec.classes.firewallmanager_spec" name="firewallmanager on debian should contain Notify[UNSUPPORTED OS]" file="./spec/classes/firewallmanager_spec.rb" time="0.010749"></testcase>
+<testcase classname="spec.classes.post_spec" name="firewallmanager::post on oraclelinux-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/post_spec.rb" time="0.058456"></testcase>
+<testcase classname="spec.classes.post_spec" name="firewallmanager::post on scientific-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/post_spec.rb" time="0.056268"></testcase>
+<testcase classname="spec.classes.post_spec" name="firewallmanager::post on centos-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/post_spec.rb" time="0.059855"></testcase>
+<testcase classname="spec.classes.post_spec" name="firewallmanager::post on redhat-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/post_spec.rb" time="0.063597"></testcase>
+<testcase classname="spec.classes.pre_spec" name="firewallmanager::pre on oraclelinux-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/pre_spec.rb" time="0.066636"></testcase>
+<testcase classname="spec.classes.pre_spec" name="firewallmanager::pre on scientific-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/pre_spec.rb" time="0.063496"></testcase>
+<testcase classname="spec.classes.pre_spec" name="firewallmanager::pre on centos-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/pre_spec.rb" time="0.063031"></testcase>
+<testcase classname="spec.classes.pre_spec" name="firewallmanager::pre on redhat-7-x86_64 should compile into a catalogue without dependency cycles" file="./spec/classes/pre_spec.rb" time="0.064935"></testcase>
 </testsuite>

@@ -6,9 +6,8 @@
 # as portas 1556 e 13782 / 13724 são para o netbackup
 ######
 
-firewallmanager::allow_icmp: 'yes'
-frwRule::allow_localhost: 'yes'
-frwRule::log_failures: 'no'
+firewallmanager::allow_icmp: true
+firewallmanager::allow_localhost: true
 frwRule::ports:
   '22':
     tcp: 'allow'
