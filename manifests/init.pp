@@ -48,7 +48,35 @@ class firewallmanager (
 
         $real_ports = deep_merge($ports, $tmpports)
 
-        notify {"DEBUG ports \$real_ports ${real_ports} value":}
+        #notify {"DEBUG real_ports value":
+        #  message => $real_ports,
+        #}
+
+        $i = 100
+
+        $real_ports.each | String $cmd_port, Hash $proto_cmd| {
+          $proto_cmd.each | String $protocol, String $command| {
+            
+            $i = $i + 1
+
+            if $command == 'allow' {
+              notify {"Opening port:${cmd_port} proto:${protocol}": }
+              firewall { "${i} ${command} inbound port ${cmd_port} ${protocol}":
+                dport    => $cmd_port,
+                proto    => $protocol,
+                action   => accept,
+              }
+            }
+            if $command == 'drop' {
+              notify {"Dropping port:${cmd_port} proto:${protocol}": }
+              firewall { "${i} ${command} inbound port ${cmd_port} ${protocol}":
+                dport    => $cmd_port,
+                proto    => $protocol,
+                action   => drop,
+              }
+            }
+          }
+        }
 
         #$frwRule::allow_icmp: = lookup('frwRule', Hash, 'hash')
       }

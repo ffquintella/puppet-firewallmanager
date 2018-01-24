@@ -26,15 +26,14 @@ class firewallmanager::pre (
         proto   => 'all',
         iniface => 'lo',
         action  => 'accept',
-      }->
-      firewall { '002 reject local traffic not on loopback interface':
+      }
+      -> firewall { '002 reject local traffic not on loopback interface':
         iniface     => '! lo',
         proto       => 'all',
         destination => '127.0.0.1/8',
         action      => 'reject',
       }
     }
-    
     firewall { '003 accept related established rules':
       proto  => 'all',
       state  => ['RELATED', 'ESTABLISHED'],

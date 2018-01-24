@@ -55,6 +55,24 @@ describe 'firewallmanager' do
     it { is_expected.to contain_firewall('999 drop all')
       .with_proto('all')
       .with_action('drop')}
+
+    it { is_expected.to contain_notify('Opening port:22 proto:tcp') }
+    it { is_expected.to contain_notify('Dropping port:23 proto:tcp') }
+
+    it { is_expected.to contain_firewall('101 allow inbound port 22 tcp')
+      .with_proto('tcp')
+      .with_dport('22')
+      .with_action('accept')}
+
+    it { is_expected.to contain_firewall('101 drop inbound port 23 udp')
+      .with_proto('udp')
+      .with_dport('23')
+      .with_action('drop')}
+
+
+    #it { is_expected.to contain_notify('DEBUG real_ports value').with_message('test') }
+
+
   end
 
 

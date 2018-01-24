@@ -11,12 +11,6 @@ firewallmanager::allow_localhost: true
 frwRule::ports:
   '22':
     tcp: 'allow'
-  '10051':
-    udp: 'drop'
-  '10050':
-    udp: 'allow'
-  '30865':
-    tcp: 'allow'
   '23':
     tcp: 'drop'
     udp: 'drop'
