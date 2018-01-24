@@ -45,6 +45,9 @@ class firewallmanager (
         class { 'firewall': }
 
         $tmpports = lookup('frwRule::ports', Hash, 'hash', {})
+        $tmpports2 = lookup('iptables::ports', Hash, 'hash', {})
+
+        $tmpports_def = deep_merge($tmpports, $tmpports2)
 
         $real_ports = deep_merge($ports, $tmpports)
 
@@ -56,7 +59,7 @@ class firewallmanager (
 
         $real_ports.each | String $cmd_port, Hash $proto_cmd| {
           $proto_cmd.each | String $protocol, String $command| {
-            
+
             $i = $i + 1
 
             if $command == 'allow' {
