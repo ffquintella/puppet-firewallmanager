@@ -56,8 +56,8 @@ describe 'firewallmanager' do
       .with_proto('all')
       .with_action('drop')}
 
-    it { is_expected.to contain_notify('Opening port:22 proto:tcp') }
-    it { is_expected.to contain_notify('Dropping port:23 proto:tcp') }
+    #it { is_expected.to contain_notify('Opening port:22 proto:tcp') }
+    #it { is_expected.to contain_notify('Dropping port:23 proto:tcp') }
 
     it { is_expected.to contain_firewall('101 allow inbound port 22 tcp')
       .with_proto('tcp')
