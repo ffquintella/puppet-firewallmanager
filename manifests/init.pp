@@ -18,7 +18,7 @@ class firewallmanager (
 
     include stdlib
 
-    notify { 'Appling firewall rules':}
+    #notify { 'Appling firewall rules':}
 
     # Only supported os so far
     if $::os['family'] == 'RedHat' {
