@@ -85,7 +85,7 @@ class firewallmanager (
           }
         }
 
-        $tmprules = lookup('frwRule::rules', Array, 'deep', [])
+        $tmprules = lookup('frwRule::rules', Array, 'unique', [])
 
         $real_rules = $tmprules
 
