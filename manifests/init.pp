@@ -30,7 +30,6 @@ class firewallmanager (
         Firewall {
           before    => Class['firewallmanager::post'],
           require   => Class['firewallmanager::pre'],
-          ensure_v6 => 'stopped',
         }
 
         class { 'firewallmanager::pre':
@@ -47,7 +46,9 @@ class firewallmanager (
           purge => $purge ,
         }
 
-        class { 'firewall': }
+        class { 'firewall':
+          ensure_v6 => 'stopped',
+        }
 
         $tmpports = lookup('frwRule::ports', Hash, 'deep', {})
         $tmpports2 = lookup('iptables::ports', Hash, 'deep', {})
