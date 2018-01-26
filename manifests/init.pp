@@ -28,8 +28,9 @@ class firewallmanager (
 
       if $enabled {
         Firewall {
-          before  => Class['firewallmanager::post'],
-          require => Class['firewallmanager::pre'],
+          before    => Class['firewallmanager::post'],
+          require   => Class['firewallmanager::pre'],
+          ensure_v6 => 'stopped',
         }
 
         class { 'firewallmanager::pre':
