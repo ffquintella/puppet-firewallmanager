@@ -8,7 +8,8 @@
 #   include firewallmanager::pre
 class firewallmanager::pre (
   $allow_icmp = true,
-  $allow_localhost = true
+  $allow_localhost = true,
+  $allow_sshd = true
   ){
     Firewall {
       require => undef,
@@ -38,6 +39,14 @@ class firewallmanager::pre (
       proto  => 'all',
       state  => ['RELATED', 'ESTABLISHED'],
       action => 'accept',
+    }
+
+    if $allow_sshd {
+      firewall { '004 accept sshd':
+        proto  => 'tcp',
+        dport  => '22',
+        action => 'accept',
+      }
     }
 
 }

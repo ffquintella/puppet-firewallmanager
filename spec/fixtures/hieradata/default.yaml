@@ -15,9 +15,25 @@ frwRule::ports:
     tcp: 'drop'
     udp: 'drop'
 
-iptables::allow_icmp: 'yes'
-iptables::allow_localhost: 'yes'
-iptables::log_failures: 'no'
+frwRule::rules:
+            -
+              port: '8080'
+              protocol: 'tcp'
+              action: 'accept'
+              source: '10.252.7.0'
+              sourcemask: '24'
+              destination: '0.0.0.0'
+              destinationmask: '0'
+            -
+              port: '8081'
+              protocol: 'tcp'
+              action: 'accept'
+              source: '10.252.7.0'
+              sourcemask: '24'
+              destination: '0.0.0.0'
+              destinationmask: '0'
+
+
 iptables::ports:
   '22':
     tcp: 'allow'
