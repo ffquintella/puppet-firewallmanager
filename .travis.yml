@@ -1,0 +1,9 @@
+deploy:
+  provider: puppetforge
+  user: ffquintella
+  password:
+    secure: "IDc5OTxe1PtD6dJXFeWMVUgylL3fk/IovYEY2OC0dJ8yJ8qsX9QKyynwuS+ryDwhY57nPztBmIUITYwBlJwgLSRSA46dtjJ8eslQVu0JXiIkPbGR33jboCCS2UiDThr6A74rFjyGcMpP8A2juTfZnuq/vuJATLatgkR3xeQNUp9ZJ6neHf438zlqFJWctbVEUdHeHCLhEmnRCiNxqUqVxDetKink5vMHOgJ+FfTifow6uFfG+FPMJvxkTXj/nI5/IN48wDdnspCvVsC/g7qZ+WG5YedhLKlX9mnEL5JikLVSaKTK2iRt5AOLo3O8qAToGqiWiJDisjKE/53kHCw1W0KID1AwIOrIc9DvFJQ2k3Tvku789Q4sbbvH/ykt9+UVONy0LAIi+ULAPafYvZgfbqvicv+dlTzYOOMmZa43orRZWLnuGOpZuHar9YyhFkdlkBKxLQsiD/SguNsw1nottsPpVyjks1ZZ/xVhR2Dh5TbZ1ElhGsFSK/mWP9rd7Z+MWoj+IX3Qx5N8/885pEEjSkQOSSfRxMqsa1jacTa79C3gaMUdt4NTNvfU2/+c7tFLYjotSi1Ael8229XI0I3ps1XT+sx+I12aN4P3PPFRvmylzxLAR5ZdOlmBqPBniTAcguvKe0wRqUHkabEt7gJExJzgFXKc1Xxqii9VpxuR0sA="
+  on:
+    tags: true
+    # all_branches is required to use tags
+    all_branches: true
