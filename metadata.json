@@ -5,9 +5,16 @@
   "summary": "This module is a wrapper to make it more confortable to define firewall rules on hiera or block definitions",
   "license": "Apache-2.0",
   "source": "https://github.com/ffquintella/puppet-firewallManager.git",
+  "issues_url": "https://github.com/ffquintella/puppet-firewallmanager/issues",
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 4.2.0 <6.0.0"},
-    {"name":"puppetlabs/firewall","version_requirement":">= 1.11.0 <2.0.0"}
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.2.0 <6.0.0"
+    },
+    {
+      "name": "puppetlabs/firewall",
+      "version_requirement": ">= 1.11.0 <2.0.0"
+    }
   ],
   "operatingsystem_support": [
     {
