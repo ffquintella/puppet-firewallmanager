@@ -1,81 +1,81 @@
 
 # firewallmanager
 
-Welcome to your new module. A short overview of the generated parts can be found in the PDK documentation at https://puppet.com/pdk/latest/pdk_generating_modules.html .
-
-The README template below provides a starting point with details about what information to include in your README.
-
-
-
-
-
-
-
 #### Table of Contents
 
 1. [Description](#description)
 2. [Setup - The basics of getting started with firewallmanager](#setup)
-    * [What firewallmanager affects](#what-firewallmanager-affects)
-    * [Setup requirements](#setup-requirements)
     * [Beginning with firewallmanager](#beginning-with-firewallmanager)
 3. [Usage - Configuration options and additional functionality](#usage)
-4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what problem it solves. This is your 30-second elevator pitch for your module. Consider including OS/Puppet version it works with.
-
-You can give more descriptive information in a second paragraph. This paragraph should answer the questions: "What does this module *do*?" and "Why would I use it?" If your module has a range of functionality (installation, configuration, management, etc.), this is the time to mention it.
+This module allows you to handle firewall rules using hiera declarations
 
 ## Setup
 
-### What firewallmanager affects **OPTIONAL**
-
-If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* Files, packages, services, or operations that the module will alter, impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled, another module, etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps for upgrading, you might want to include an additional "Upgrading" section here.
-
 ### Beginning with firewallmanager
 
-The very basic steps needed for a user to get the module up and running. This can include setup steps, if necessary, or it can be an example of the most basic use of the module.
+Basically all you need to start using it is to include the firewall manager class 
+
+```
+
+include 'firewallmanager'
+
+```
+
+
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the fancy stuff with your module here. It's especially helpful if you include usage examples and code samples for doing things with your module.
+Basically you will define the open ports you need on hiera files like this 
 
-## Reference
+Usual example 
 
-Users need a complete list of your module's classes, types, defined types providers, facts, and functions, along with the parameters for each. You can provide this list either via Puppet Strings code comments or as a complete list in the README Reference section.
+```
+frwRule::ports:
+  '10058':
+    'tcp': 'allow'
+  '54663':
+    'tcp': 'allow'
+    'udp': 'allow'
+  '54664':
+    'tcp': 'allow'
+  '54953':
+    'tcp': 'allow'
 
-* If you are using Puppet Strings code comments, this Reference section should include Strings information so that your users know how to access your documentation.
+```
 
-* If you are not using Puppet Strings, include a list of all of your classes, defined types, and so on, along with their parameters. Each element in this listing should include:
+A more advanced rule set is also supported
 
-  * The data type, if applicable.
-  * A description of what the element does.
-  * Valid values, if the data type doesn't make it obvious.
-  * Default value, if any.
+```
+frwRule::rules:
+            -
+              port: '8080'
+              protocol: 'tcp'
+              action: 'accept'
+              source: '10.252.7.0'
+              sourcemask: '24'
+              destination: '0.0.0.0'
+              destinationmask: '0'
+            -
+              port: '80'
+              protocol: 'tcp'
+              action: 'accept'
+              source: '10.252.7.0'
+              sourcemask: '24'
+              destination: '0.0.0.0'
+              destinationmask: '0'
+
+```
+
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there are Known Issues, you might want to include them under their own heading here.
+This is only tested on RedHat environments
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You can also add any additional sections you feel are necessary or important to include here. Please use the `## ` header.
+Please try to keep your code tested and well documented. 
