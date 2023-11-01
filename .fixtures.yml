@@ -1,4 +1,4 @@
 fixtures:
-  repositories:
+  forge_modules:
     firewall: 'puppetlabs-firewall'
     stdlib: 'puppetlabs-stdlib'
