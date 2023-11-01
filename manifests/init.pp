@@ -111,7 +111,7 @@ class firewallmanager (
           firewall { "${z} ${rule['action']} table ${rule['table']} chain ${rule['chain']} port ${rule['port']} ${rule['protocol']} source ${rule['source']}/${rule['sourcemask']} dest ${rule['destination']}/${rule['destinationmask']}":
             dport       => $rule['port'],
             proto       => $rule['protocol'],
-            action      => $rule['action'],
+            jump        => $rule['action'],
             chain       => $rule['chain'],
             table       => $rule['table'],
             source      => "${rule['source']}/${rule['sourcemask']}",
