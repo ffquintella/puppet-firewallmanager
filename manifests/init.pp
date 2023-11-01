@@ -81,7 +81,7 @@ class firewallmanager (
               firewall { "${i} ${command} inbound port ${cmd_port} ${protocol}":
                 dport  => $cmd_port,
                 proto  => $protocol,
-                action => 'drop',
+                jump => 'drop',
               }
             }
           }
