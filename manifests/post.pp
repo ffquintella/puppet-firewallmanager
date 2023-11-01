@@ -15,7 +15,7 @@ class firewallmanager::post (
     if $block_default {
       firewall { '999 drop all':
         proto  => 'all',
-        action => 'drop',
+        jump   => 'drop',
       }
     }
 

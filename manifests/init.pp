@@ -21,7 +21,7 @@ class firewallmanager (
     #notify { 'Appling firewall rules':}
 
     # Only supported os so far
-    if $::os['family'] == 'RedHat' {
+    if $os['family'] == 'RedHat' {
       file {'/etc/sysconfig/firewallmanager':
         ensure => directory,
       }
@@ -73,7 +73,7 @@ class firewallmanager (
               firewall { "${i} ${command} inbound port ${cmd_port} ${protocol}":
                 dport  => $cmd_port,
                 proto  => $protocol,
-                action => accept,
+                jump   => 'accept',
               }
             }
             if $command == 'drop' {
@@ -81,7 +81,7 @@ class firewallmanager (
               firewall { "${i} ${command} inbound port ${cmd_port} ${protocol}":
                 dport  => $cmd_port,
                 proto  => $protocol,
-                action => drop,
+                action => 'drop',
               }
             }
           }
