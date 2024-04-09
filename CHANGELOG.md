@@ -2,7 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
-## Release 0.1.0
+## Releases
+
+* 1.2.2 - Small fix in Debian support
+* 1.2.1 - Debian support
 
 **Features**
 

@@ -22,8 +22,11 @@ class firewallmanager (
 
     # Only supported os so far
     if $os['family'] in ['RedHat', 'Debian']  {
-      file {'/etc/sysconfig/firewallmanager':
-        ensure => directory,
+
+      if $os['family'] == 'RedHat' {
+        file {'/etc/sysconfig/firewallmanager':
+          ensure => directory,
+        }
       }
 
       if $enabled {
