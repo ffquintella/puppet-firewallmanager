@@ -111,7 +111,7 @@ class firewallmanager (
 
           #notify { "New rule ${rule} ": }
 
-          firewall { "${z} ${rule['action']} table ${rule['table']} chain ${rule['chain']} port ${rule['port']} ${rule['protocol']} source ${rule['source']}/${rule['sourcemask']} dest ${rule['destination']}/${rule['destinationmask']}":
+          firewall { "${z} ${rule['action']} custom input":
             dport       => $rule['port'],
             proto       => $rule['protocol'],
             jump        => $rule['action'],
