@@ -105,13 +105,9 @@ class firewallmanager (
         $rule_table = undef
 
 
-        $z = 200
-        $real_rules.each | Hash $rule| {
-          $z = $z + 1
-
-          #notify { "New rule ${rule} ": }
-
-          firewall { "${z} ${rule['action']} custom input":
+        $real_rules.each |$rule, $i| {
+          $number = $i + 300
+          firewall { "${number}_custom_input_${rule['action']}}":
             dport       => $rule['port'],
             proto       => $rule['protocol'],
             jump        => $rule['action'],
@@ -120,8 +116,6 @@ class firewallmanager (
             source      => "${rule['source']}/${rule['sourcemask']}",
             destination => "${rule['destination']}/${rule['destinationmask']}",
           }
-
-
         }
 
 
