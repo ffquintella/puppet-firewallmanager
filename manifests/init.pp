@@ -98,7 +98,7 @@ class firewallmanager (
 
       $real_rules.each |String $rule_name, Hash $rule| {
         $z = $z + 1
-        firewall { "${z}_${rule_name}_action_${rule['action']}":
+        firewall { "${z} ${rule_name} action ${rule['action']}":
           dport       => $rule['port'],
           proto       => $rule['protocol'],
           jump        => $rule['action'],
