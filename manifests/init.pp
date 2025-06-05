@@ -90,7 +90,7 @@ class firewallmanager (
           }
         }
 
-        $tmprules = lookup('frwRule::rules', Array, 'unique', [])
+        $tmprules = lookup('frwRule::rules', Hash, 'deep', {})
 
         $real_rules = $tmprules
 
@@ -111,8 +111,6 @@ class firewallmanager (
             dport       => $rule['port'],
             proto       => $rule['protocol'],
             jump        => $rule['action'],
-            chain       => $rule['chain'],
-            table       => $rule['table'],
             source      => "${rule['source']}/${rule['sourcemask']}",
             destination => "${rule['destination']}/${rule['destinationmask']}",
           }
