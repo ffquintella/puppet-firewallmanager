@@ -1,6 +1,6 @@
 {
   "name": "ffquintella-firewallmanager",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "author": "Felipe Quintella",
   "summary": "This module is a wrapper to make it more confortable to define firewall rules on hiera or block definitions",
   "license": "Apache-2.0",
